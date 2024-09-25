@@ -1,0 +1,25 @@
+[package]
+name = "r-idcard"
+version = "0.1.0"
+edition = "2021"
+description = "A CLI to parse chinese 18 digit idcard including region and sex."
+license = "MIT"
+authors = ["bujnlc8 <75124771@qq.com>"]
+repository = "https://github.com/bujnlc8/idcard"
+categories = ["command-line-utilities"]
+
+[dependencies]
+region-cn = "0.1.5"
+reqwest = { version = "0.12", features = ["rustls-tls", "blocking"], default-features=false}
+
+
+[[bin]]
+name = "idcard"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+opt-level = "z"
+panic = "abort"
+strip = true
+codegen-units = 1
