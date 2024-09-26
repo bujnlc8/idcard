@@ -453,7 +453,7 @@ dependencies = [
 
 [[package]]
 name = "r-idcard"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "region-cn",
  "reqwest",
@@ -491,9 +491,9 @@ dependencies = [
 
 [[package]]
 name = "region-cn"
-version = "0.1.7"
+version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4c963fb5512200cfd4653f4fb5721e0c0f39a3e03091e526d94efca9e0112d46"
+checksum = "1651b16ce847bec17e400e29c3a7e057e3c6c92ce43b1d42955aeecdcb569918"
 dependencies = [
  "anyhow",
 ]

@@ -1,6 +1,6 @@
 [package]
 name = "r-idcard"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "A CLI to parse chinese 18 digit idcard including region and sex."
 license = "MIT"
@@ -9,7 +9,7 @@ repository = "https://github.com/bujnlc8/idcard"
 categories = ["command-line-utilities"]
 
 [dependencies]
-region-cn = "0.1.5"
+region-cn = "0.1.8"
 reqwest = { version = "0.12", features = ["rustls-tls", "blocking"], default-features=false}
 
 

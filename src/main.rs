@@ -34,7 +34,7 @@ fn main() {
     }
     let idcard = args.get(1).unwrap();
     if idcard.len() != 18 {
-        eprintln!("只支持18位身份证");
+        eprintln!("只支持中国大陆18位身份证");
         std::process::exit(1);
     }
     let dat_path = PathBuf::from(format!(
