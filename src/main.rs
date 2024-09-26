@@ -12,14 +12,14 @@ const REGION_DAT_URL: &str =
     "https://github.com/bujnlc8/region-cn/raw/refs/heads/main/data/region_full.dat";
 
 fn download_region_dt(download_url: &str, dest: &Path) -> Result<(), Error> {
-    match reqwest::blocking::get(download_url) {
-        Ok(mut resp) => {
+    match ureq::get(download_url).call() {
+        Ok(resp) => {
             let dest_dir = dest.parent().unwrap();
             if !dest_dir.exists() {
                 fs::create_dir_all(dest_dir)?;
             }
             let mut dest_file = File::create(dest)?;
-            io::copy(&mut resp, &mut dest_file)?;
+            io::copy(&mut resp.into_reader(), &mut dest_file)?;
             Ok(())
         }
         Err(e) => Err(Error::new(ErrorKind::TimedOut, e.to_string())),
