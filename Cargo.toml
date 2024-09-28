@@ -1,6 +1,6 @@
 [package]
 name = "r-idcard"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 description = "A CLI to parse chinese 18 digit idcard including region and sex."
 license = "MIT"
