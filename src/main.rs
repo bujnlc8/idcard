@@ -34,16 +34,16 @@ fn main() {
     }
     let idcard = args.get(1).unwrap();
     if idcard.len() != 18 {
-        eprintln!("只支持中国大陆18位身份证");
+        eprintln!("\x1b[31m只支持中国大陆18位身份证\x1b[0m");
         std::process::exit(1);
     }
     let dat_path = PathBuf::from(format!(
-        "{}/.cache/region_full.dat",
+        "{}/.cache/idcard/region_full.dat",
         env::home_dir().unwrap().to_str().unwrap(),
     ));
     if !dat_path.exists() {
         let _ = download_region_dt(REGION_DAT_URL, &dat_path).is_err_and(|e| {
-            eprintln!("{}", e);
+            eprintln!("\x1b[31m{}\x1b[0m", e);
             std::process::exit(1);
         });
     }
@@ -64,11 +64,14 @@ fn main() {
             }
             println!("区号: {}", result.region_code);
             if result.discard_year > 0 {
-                println!("地址: {} ({}年废止)", result.name, result.discard_year);
+                println!(
+                    "地址: {} \x1b[90m(于{}年废止)\x1b[0m",
+                    result.name, result.discard_year
+                );
             } else {
                 println!("地址: {}", result.name);
             }
         }
-        Err(e) => eprintln!("{}", e),
+        Err(e) => eprintln!("\x1b[31m{}\x1b[0m", e),
     }
 }
