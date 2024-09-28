@@ -10,7 +10,7 @@ categories = ["command-line-utilities"]
 keywords = ["idcard", "idcard-region"]
 
 [dependencies]
-region-cn = "0.1.8"
+region-cn = "0.1.9"
 ureq = {version = "2.10.1", default-features = false, features = ["tls"]}
 
 
