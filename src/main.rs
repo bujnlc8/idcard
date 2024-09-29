@@ -47,7 +47,14 @@ fn main() {
             std::process::exit(1);
         });
     }
-    let mut region = Region::new(dat_path);
+    let mut region = Region::new(dat_path.clone());
+    let version: i32 = region.get_version().unwrap().parse().unwrap();
+    if version < 2024092911 {
+        let _ = download_region_dt(REGION_DAT_URL, &dat_path).is_err_and(|e| {
+            eprintln!("\x1b[31m{}\x1b[0m", e);
+            std::process::exit(1);
+        });
+    }
     match region.search_with_data(&idcard[..6]) {
         Ok(result) => {
             println!(
